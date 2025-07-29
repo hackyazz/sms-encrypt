@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./index.css" rel="stylesheet"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./index.css" rel="stylesheet" />
     <title>sms加密</title>
-</head>
+  </head>
 
-<body>
-    <script src="./index.js" ></script>
-    <div class="navbar">
-        sms加密
-    </div>
+  <body>
+    <script src="./index.js"></script>
+    <div class="navbar">K8SMS专用加密</div>
     <div class="content">
+      <div>
+        <textarea rows="10" id="input"></textarea>
         <div>
-            <textarea rows="10" id="input"></textarea>
+          输入示例：<br/>
+          xxxxx----https://k8sms.com/q/xxxxxxx-xxxx-xxxx<br/>
+          xxxxx----https://k8sms.com/q/xxxxxxx-xxxx-xxxx<br/>
+          xxxxx----https://k8sms.com/q/xxxxxxx-xxxx-xxxx
         </div>
-        <div>
-            <button id="transfer">加密</button>
-            <button id="delete">删除</button>
-            <button id="check">查询</button>
+      </div>
+      <div>
+        <button id="transfer">加密</button>
+        <button id="delete">删除</button>
+        <button id="check">查询</button>
+      </div>
+
+      <div class="result">
+        <div class="result-header">
+          输出结果<span class="result-tip"
+            >*加密之后的输出结果有q/s标识符，上述按钮输入均使用原始链接操作</span
+          >
         </div>
-        
-        <div class="result">
-            <div class="result-header">
-                输出结果
-            </div>
-            <div class="result-body" id="result">
-                暂无输出结果
-            </div>
-        </div>
+        <div class="result-body" id="result">暂无输出结果</div>
+      </div>
     </div>
-    
-    
-</body>
+  </body>
 </html>

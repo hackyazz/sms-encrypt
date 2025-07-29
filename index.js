@@ -1,6 +1,6 @@
 let result = null;
 let textarea_input = null;
-
+const REQUEST_URL = "https://k8sms.com/api/v1";
 // 192.168.31.253:8093
 window.onload = function () {
   let encrypt_button = document.getElementById("transfer");
@@ -24,12 +24,12 @@ function encrypt_button_click(e) {
   console.log(textarea_input.value);
   const formData = new FormData();
   formData.append("content", textarea_input.value);
-
-  request(
-    "POST",
-    "http://192.168.31.253:8093/api/v1/url_encipher/batch_encipher",
-    formData
-  )
+  result.innerText = "正在加密，请等待...";
+  request({
+    method: "POST",
+    url: `${REQUEST_URL}/url_encipher/batch_encipher`,
+    data: formData,
+  })
     .then((res) => {
       console.log(res);
       result.innerText = res;
@@ -45,37 +45,42 @@ function encrypt_button_click(e) {
 
 function delete_button_click(e) {
   console.log("delete_button_click ", e);
-  result.innerText = "delete_button_click";
+  
 
-  const formData = new FormData();
-  formData.append("content", textarea_input.value);
+  const isConfirm = window.confirm("是否确认删除");
 
-  request(
-    "POST",
-    "http://192.168.31.253:8093/api/v1/url_encipher/batch_delete_encipher",
-    formData
-  )
-    .then((res) => {
-      console.log(res);
-      result.innerText = res;
+  if (isConfirm) {
+    result.innerText = "正在删除，请等待...";
+    const formData = new FormData();
+    formData.append("content", textarea_input.value);
+
+    request({
+      method: "POST",
+      url: `${REQUEST_URL}/url_encipher/batch_delete_encipher`,
+      data: formData,
     })
-    .catch((err) => {
-      console.warn(err);
-    });
+      .then((res) => {
+        console.log(res);
+        result.innerText = res;
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  }
 }
 
 function check_button_click(e) {
   console.log("check_button_click ", e);
-  result.innerText = "check_button_click";
+  result.innerText = "正在查询，请等待...";
 
   const formData = new FormData();
   formData.append("content", textarea_input.value);
 
-  request(
-    "POST",
-    "http://192.168.31.253:8093/api/v1/url_encipher/batch_query_encipher",
-    formData
-  )
+  request({
+    method: "POST",
+    url: `${REQUEST_URL}/url_encipher/batch_query_encipher`,
+    data: formData,
+  })
     .then((res) => {
       console.log(res);
       result.innerText = res;
