@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     padding: 12px;
 }
 
@@ -10,7 +11,7 @@ body {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
-    padding-left: 12px;
+    /* padding-left: 12px; */
 }
 
 .content {
@@ -22,12 +23,13 @@ body {
     padding: 12px;
 }
 
-.content textarea {
+.content .input-wrapper {
     margin: auto;
     width: 100%;
     max-width: 840px;
     /* min-width: 960px; */
-    resize: vertical;
+    
+    
 }
 
 #transfer, #delete, #check {
